@@ -1,0 +1,508 @@
+/* ============================================================
+   Deepgram Voice Radio — 1970s Classic Radio Styles
+   ============================================================ */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --wood-dark: #3e2723;
+  --wood-mid: #5d4037;
+  --wood-light: #6d4c41;
+  --grill-bg: #1a1a1a;
+  --grill-hole: #111;
+  --amber: #ff8f00;
+  --amber-glow: #ffb300;
+  --cream: #f5f0e1;
+  --cream-dark: #e8dcc8;
+  --green-scope: #00ff66;
+  --green-dim: #004d1a;
+  --red-accent: #c62828;
+  --brass: #c9a84c;
+  --notebook-bg: #fdf6e3;
+  --notebook-line: #c5e0a4;
+  --notebook-margin: #e57373;
+  --font-retro: 'Courier New', 'Lucida Console', monospace;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+}
+
+body {
+  font-family: var(--font-retro);
+  background: #2c2c2c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 16px;
+}
+
+#root {
+  width: 100%;
+  max-width: 520px;
+}
+
+/* ---------- Disclaimer ---------- */
+.disclaimer {
+  width: 100%;
+  max-width: 520px;
+  background: var(--cream-dark);
+  border: 1px solid var(--brass);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  font-size: 0.68rem;
+  color: var(--wood-dark);
+  line-height: 1.5;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* ---------- Radio Cabinet ---------- */
+.radio {
+  width: 100%;
+  background: linear-gradient(145deg, var(--wood-mid), var(--wood-dark));
+  border-radius: var(--radius-lg);
+  padding: 24px 20px 20px;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+  position: relative;
+}
+
+.radio-brand {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.radio-brand h1 {
+  font-family: var(--font-retro);
+  font-size: 1rem;
+  color: var(--amber-glow);
+  text-shadow: 0 0 8px rgba(255,179,0,0.4);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ---------- Speaker Grill ---------- */
+.speaker-grill {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 320px;
+  background: var(--grill-bg);
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  position: relative;
+  overflow: hidden;
+  border: 6px solid var(--wood-dark);
+  box-shadow:
+    inset 0 2px 12px rgba(0,0,0,0.8),
+    0 0 0 3px var(--brass);
+}
+
+.speaker-grill canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---------- Control Panel ---------- */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+
+.radio-btn {
+  font-family: var(--font-retro);
+  font-size: 0.65rem;
+  font-weight: bold;
+  width: 72px;
+  height: 72px;
+  border: 3px solid var(--brass);
+  border-radius: 50%;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.4),
+    inset 0 2px 4px rgba(255,255,255,0.15),
+    0 0 0 2px rgba(0,0,0,0.3);
+}
+
+.radio-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.5),
+    inset 0 2px 4px rgba(255,255,255,0.2),
+    0 0 0 2px rgba(0,0,0,0.3);
+}
+
+.radio-btn:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.4),
+    inset 0 2px 4px rgba(0,0,0,0.2),
+    0 0 0 2px rgba(0,0,0,0.3);
+}
+
+.radio-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+  filter: grayscale(0.6);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.2),
+    inset 0 1px 2px rgba(255,255,255,0.05),
+    0 0 0 2px rgba(0,0,0,0.2);
+}
+
+.btn-call {
+  background: radial-gradient(circle at 35% 35%, #ffca28, var(--amber), #e65100);
+  color: var(--wood-dark);
+}
+
+.btn-call:hover:not(:disabled) {
+  background: radial-gradient(circle at 35% 35%, #ffe082, var(--amber-glow), #ef6c00);
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.5),
+    inset 0 2px 4px rgba(255,255,255,0.2),
+    0 0 16px rgba(255,179,0,0.5);
+}
+
+.btn-call.active {
+  background: radial-gradient(circle at 35% 35%, #ffe082, var(--amber-glow), #ef6c00);
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.4),
+    inset 0 2px 4px rgba(255,255,255,0.15),
+    0 0 20px rgba(255,179,0,0.8);
+}
+
+.btn-memo {
+  background: radial-gradient(circle at 35% 35%, #ef5350, var(--red-accent), #7f0000);
+  color: var(--cream);
+}
+
+.btn-memo:hover:not(:disabled) {
+  background: radial-gradient(circle at 35% 35%, #f44336, #e53935, #b71c1c);
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.5),
+    inset 0 2px 4px rgba(255,255,255,0.2),
+    0 0 12px rgba(229,57,53,0.5);
+}
+
+.btn-memo.recording {
+  background: radial-gradient(circle at 35% 35%, #ff1744, #d50000, #880e4f);
+  animation: pulse-red 1s ease-in-out infinite;
+}
+
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 4px rgba(255,23,68,0.5); }
+  50% { box-shadow: 0 0 20px rgba(255,23,68,0.9); }
+}
+
+.btn-voicemail {
+  background: radial-gradient(circle at 35% 35%, #8d6e63, var(--wood-light), #3e2723);
+  color: var(--cream);
+  position: relative;
+}
+
+.btn-voicemail:hover:not(:disabled) {
+  background: radial-gradient(circle at 35% 35%, #a1887f, var(--wood-mid), #4e342e);
+}
+
+.voicemail-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--red-accent);
+  color: white;
+  font-size: 0.55rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--wood-dark);
+}
+
+/* ---------- Notebook Panel (inline below radio) ---------- */
+.notebook-panel {
+  width: 100%;
+  margin-top: 16px;
+  animation: slideDown 0.25s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Notebook Style ---------- */
+.notebook {
+  width: 100%;
+  max-height: none;
+  overflow-y: visible;
+  background: var(--notebook-bg);
+  border-radius: var(--radius-md);
+  padding: 24px 24px 24px 48px;
+  position: relative;
+  box-shadow:
+    4px 4px 16px rgba(0,0,0,0.5),
+    inset -2px 0 4px rgba(0,0,0,0.1);
+  background-image:
+    repeating-linear-gradient(
+      transparent,
+      transparent 27px,
+      var(--notebook-line) 27px,
+      var(--notebook-line) 28px
+    );
+  background-position: 0 24px;
+}
+
+.notebook::before {
+  content: '';
+  position: absolute;
+  left: 36px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--notebook-margin);
+}
+
+.notebook-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.notebook p {
+  color: #444;
+  font-size: 0.97rem;
+  font-weight: bold;
+  line-height: 28px;
+  margin-bottom: 8px;
+}
+
+.notebook input[type="text"] {
+  font-family: var(--font-retro);
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid #bcaaa4;
+  border-radius: var(--radius-sm);
+  background: white;
+  font-size: 0.9rem;
+  margin: 8px 0 12px;
+  outline: none;
+}
+
+.notebook input[type="text"]:focus {
+  border-color: var(--amber);
+}
+
+.notebook-btn {
+  font-family: var(--font-retro);
+  padding: 8px 16px;
+  border: 2px solid #8d6e63;
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  color: var(--wood-dark);
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin: 4px;
+  transition: all 0.15s;
+}
+
+.notebook-btn:hover {
+  background: var(--amber);
+  color: var(--wood-dark);
+}
+
+.notebook-btn.primary {
+  background: var(--amber);
+  border-color: var(--amber);
+  font-weight: bold;
+}
+
+.notebook-btn.primary:hover {
+  background: var(--amber-glow);
+}
+
+.notebook-btn.danger {
+  background: var(--red-accent);
+  color: white;
+  border-color: var(--red-accent);
+}
+
+.notebook-btn.danger:hover {
+  background: #e53935;
+}
+
+/* ---------- Agent Selection ---------- */
+.agent-list {
+  list-style: none;
+  margin: 12px 0;
+}
+
+.agent-list li {
+  padding: 12px 16px;
+  margin: 6px 0;
+  background: white;
+  border: 2px solid #d7ccc8;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: all 0.15s;
+  color: var(--wood-dark);
+}
+
+.agent-list li:hover {
+  border-color: var(--amber);
+  background: #fff8e1;
+}
+
+.agent-list li.selected {
+  border-color: var(--amber);
+  background: var(--amber);
+  color: var(--wood-dark);
+}
+
+/* ---------- Call Status ---------- */
+.call-status {
+  text-align: center;
+  margin: 12px 0;
+}
+
+.call-status .status-text {
+  color: #1b5e20;
+  font-size: 1.7rem;
+  animation: blink 1.2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hangup-btn {
+  font-family: var(--font-retro);
+  padding: 8px 24px;
+  background: var(--red-accent);
+  color: white;
+  border: 2px solid var(--red-accent);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-top: 8px;
+}
+
+.hangup-btn:hover {
+  background: #e53935;
+}
+
+/* ---------- Voicemail Panel ---------- */
+.voicemail-list {
+  list-style: none;
+  margin: 8px 0;
+}
+
+.voicemail-item {
+  padding: 12px 14px;
+  margin: 6px 0;
+  background: white;
+  border: 1px solid #d7ccc8;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  white-space: normal;
+  word-wrap: break-word;
+  transition: background 0.15s;
+}
+
+.voicemail-item:hover {
+  background: #fff8e1;
+}
+
+.voicemail-item.read {
+  opacity: 0.6;
+}
+
+.voicemail-item.unread {
+  border-left: 3px solid var(--amber);
+  font-weight: bold;
+}
+
+/* ---------- Memo display ---------- */
+.memo-display {
+  margin: 8px 0;
+  padding: 12px;
+  background: white;
+  border: 1px solid #d7ccc8;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: #333;
+}
+
+/* ---------- Scrollbar ---------- */
+.notebook::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notebook::-webkit-scrollbar-thumb {
+  background: #bcaaa4;
+  border-radius: 3px;
+}
+
+/* ---------- Mobile Responsive ---------- */
+@media (max-width: 480px) {
+  .radio {
+    padding: 16px 12px 14px;
+  }
+
+  .radio-brand h1 {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+
+  .speaker-grill {
+    max-height: 260px;
+  }
+
+  .controls {
+    gap: 14px;
+  }
+
+  .radio-btn {
+    width: 62px;
+    height: 62px;
+    font-size: 0.58rem;
+  }
+
+  .notebook {
+    padding: 16px 16px 16px 40px;
+  }
+
+  .notebook-panel {
+    margin-top: 12px;
+  }
+
+}
